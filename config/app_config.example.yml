@@ -1,0 +1,10 @@
+--- !map:HashWithIndifferentAccess
+development:
+  action_mailer:
+    from_address: afton.palmer@agapered.com
+    default_url_options:
+      host: localhost:3000
+      protocol: http
+    smtp_settings:
+      address: localhost
+      port: 1025
