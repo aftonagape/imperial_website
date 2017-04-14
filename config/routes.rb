@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
-  get 'home/show'
+  get 'detachments/index'
 
-  root 'home#show'
+  get 'detachments/show'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'home#index'
+
+  resources :members
+  resources :events
+  resources :costumes
+
 end
+

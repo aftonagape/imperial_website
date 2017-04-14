@@ -10,9 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170410031637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "costumes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "detachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "info"
+    t.string   "coordinator"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "member_costumes", force: :cascade do |t|
+    t.integer  "costume_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["costume_id"], name: "index_member_costumes_on_costume_id", using: :btree
+    t.index ["member_id"], name: "index_member_costumes_on_member_id", using: :btree
+  end
+
+  create_table "member_events", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_member_events_on_event_id", using: :btree
+    t.index ["member_id"], name: "index_member_events_on_member_id", using: :btree
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.string   "tkid"
+    t.string   "location"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "member_costumes", "costumes"
+  add_foreign_key "member_costumes", "members"
+  add_foreign_key "member_events", "events"
+  add_foreign_key "member_events", "members"
 end
