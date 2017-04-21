@@ -1,2 +1,31 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address
+      %th Start Time
+      %th End Time
+      %th Info
+      %th Coordinator
+      %th
+  %tbody
+    - events.each do |event|
+      %tr
+        %td
+          = link_to event.name, event_path(event.id)
+        %td=event.address
+        %td=event.set_start_time
+        %td=event.set_end_time
+        %td=event.info
+        %td=event.coordinator
+
+
+  %tfoot
+    %tr
+      %th Name
+      %th Address
+      %th Start Time
+      %th End Time
+      %th Info
+      %th Coordinator
+      %th

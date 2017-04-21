@@ -1,0 +1,2 @@
+class CostumeDetachment < ApplicationRecord
+end

@@ -10,14 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410031637) do
+ActiveRecord::Schema.define(version: 20170421204828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "costume_detachments", force: :cascade do |t|
+    t.integer  "costume_id"
+    t.integer  "detachment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["costume_id"], name: "index_costume_detachments_on_costume_id", using: :btree
+    t.index ["detachment_id"], name: "index_costume_detachments_on_detachment_id", using: :btree
+  end
+
   create_table "costumes", force: :cascade do |t|
     t.string   "name"
     t.string   "detachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "detachments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "theme"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170410031637) do
     t.string   "coordinator"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "slug"
   end
 
   create_table "member_costumes", force: :cascade do |t|
