@@ -1,0 +1,25 @@
+%table
+  %thead
+    %tr
+      %th Name
+      %th TK ID
+      %th Location
+      %th Email
+
+  %tbody
+    - members.each do |member|
+      %tr
+        %td
+          = link_to member.name, member_path(member.id)
+        %td=member.tkid
+        %td=member.location
+        %td=member.email
+
+
+
+  %tfoot
+    %tr
+      %th Name
+      %th TK ID
+      %th Location
+      %th Email

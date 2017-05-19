@@ -12,7 +12,7 @@
     - events.each do |event|
       %tr
         %td
-          = link_to event.name, event_path(event.id)
+          = link_to event.name, event_url(event)
         %td=event.address
         %td=event.set_start_time
         %td=event.set_end_time
